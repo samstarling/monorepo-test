@@ -10,5 +10,5 @@ import (
 func main() {
 	server := &handler.Server{}
 	handler := additionproto.NewAdditionServer(server, nil)
-	http.ListenAndServe(":8082", handler)
+	http.ListenAndServe(":8080", handler)
 }

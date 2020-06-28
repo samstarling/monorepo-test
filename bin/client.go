@@ -11,23 +11,19 @@ import (
 )
 
 func main() {
-	client := helloworldproto.NewHelloWorldProtobufClient("http://localhost:8080", &http.Client{})
-	addClient := additionproto.NewAdditionProtobufClient("http://localhost:8082", &http.Client{})
+	addClient := additionproto.NewAdditionProtobufClient("http://127.0.0.1:9000", &http.Client{})
+	client := helloworldproto.NewHelloWorldProtobufClient("http://127.0.0.1:9001", &http.Client{})
 
 	ctx := context.Background()
 
-	rsp, err := client.Hello(ctx, &helloworldproto.HelloReq{
-		Subject: "World",
-	})
+	rsp, err := client.Hello(ctx, &helloworldproto.HelloReq{Subject: "World"})
 	if err != nil {
 		fmt.Printf("An error occurred: %v", err)
 		os.Exit(1)
 	}
 	fmt.Println(fmt.Sprintf("The reply was: %s", rsp.Text))
 
-	rsp, err = client.Hello(ctx, &helloworldproto.HelloReq{
-		Subject: "Potato",
-	})
+	rsp, err = client.Hello(ctx, &helloworldproto.HelloReq{Subject: "Potato"})
 	if err != nil {
 		fmt.Printf("An error occurred: %v", err)
 		os.Exit(1)
