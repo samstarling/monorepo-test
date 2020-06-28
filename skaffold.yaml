@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: twirp-test
+build:
+  artifacts:
+  - image: s-addition
+    context: internal/service.addition
+  - image: s-hello-world
+    context: internal/service.hello-world
+deploy:
+  kubectl:
+    manifests:
+    - internal/service.addition/k8s.yaml
+    - internal/service.hello-world/k8s.yaml
