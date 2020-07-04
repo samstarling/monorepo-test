@@ -4,12 +4,16 @@ metadata:
   name: twirp-test
 build:
   artifacts:
-  - image: s-addition
-    context: internal/service.addition
-  - image: s-hello-world
-    context: internal/service.hello-world
+    - image: s-addition
+      context: .
+      docker:
+        dockerfile: internal/service.addition/Dockerfile
+    - image: s-hello-world
+      context: .
+      docker:
+        dockerfile: internal/service.hello-world/Dockerfile
 deploy:
   kubectl:
     manifests:
-    - internal/service.addition/k8s.yaml
-    - internal/service.hello-world/k8s.yaml
+      - internal/service.addition/k8s.yaml
+      - internal/service.hello-world/k8s.yaml

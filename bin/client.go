@@ -11,8 +11,8 @@ import (
 )
 
 func main() {
-	addClient := additionproto.NewAdditionProtobufClient("http://127.0.0.1:9000", &http.Client{})
-	client := helloworldproto.NewHelloWorldProtobufClient("http://127.0.0.1:9001", &http.Client{})
+	addClient := additionproto.NewAdditionProtobufClient("http://127.0.0.1:8081", &http.Client{})
+	client := helloworldproto.NewHelloWorldProtobufClient("http://127.0.0.1:8082", &http.Client{})
 
 	ctx := context.Background()
 

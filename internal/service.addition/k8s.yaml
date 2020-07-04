@@ -30,10 +30,10 @@ spec:
         - name: server
           image: s-addition
           ports:
-            - containerPort: 3550
+            - containerPort: 8080
           env:
             - name: PORT
-              value: "3550"
+              value: "8080"
           resources:
             requests:
               cpu: 100m
@@ -52,5 +52,5 @@ spec:
     app: s-addition
   ports:
     - name: grpc
-      port: 3550
-      targetPort: 3550
+      port: 8080
+      targetPort: 8080
